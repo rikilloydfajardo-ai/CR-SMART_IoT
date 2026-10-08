@@ -51,7 +51,7 @@ CR-SMART_IoT/
 
 | Area | Status |
 |---|---|
-| Hardware | Breadboard prototype assembled (ESP32, MQ-137, 3 LEDs, buzzer) |
+| Hardware | Breadboard prototype assembled (ESP32, MQ-137, 3 LEDs, buzzer) — [photos](documentation/hardware/README.md) |
 | Firmware | Not yet in repository |
 | Dashboard | Not yet started in repository |
 | AI predictive analytics | Planned |
