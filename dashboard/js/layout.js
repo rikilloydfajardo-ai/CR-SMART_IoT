@@ -51,11 +51,11 @@ function buildHeader(isLogin) {
          <span class="avatar">JG</span>
          <span class="role-badge">SUPER ADMIN</span>
        </div>
-       <a class="btn-outline-light" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Log-out</a>`;
+       <a class="btn-outline-light" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span class="label"> Log-out</span></a>`;
 
   const menuButton = isLogin
     ? ''
-    : `<button class="btn-outline-light" id="menu-toggle"><i class="fa-solid fa-bars"></i> Menu</button>`;
+    : `<button class="btn-outline-light" id="menu-toggle"><i class="fa-solid fa-bars"></i><span class="label"> Menu</span></button>`;
 
   return `
     <div class="title-bar">${SYSTEM_TITLE}</div>

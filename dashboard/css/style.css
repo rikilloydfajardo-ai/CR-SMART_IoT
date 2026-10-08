@@ -504,6 +504,16 @@ table.data tr:last-child td { border-bottom: none; }
   .page-head, .dispatch-head { flex-direction: column; align-items: flex-start; }
   .head-actions { align-items: flex-start; }
   .table-scroll { overflow-x: auto; }
+  .table-scroll table.data { min-width: 820px; }
   .main { padding: 16px; }
   .hero-left h1 { font-size: 34px; }
+  .title-bar { height: auto; min-height: var(--title-bar-h); padding: 6px 16px; font-size: 11px; }
+  .site-header { padding: 0 12px; gap: 8px; }
+  .header-left, .header-right { gap: 8px; }
+  .brand-name { white-space: nowrap; }
+  .role-badge, .btn-outline-light .label { display: none; }
+  .user-pill { padding: 4px; border: none; }
+  .filter { flex-wrap: wrap; }
+  .demo-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .floor-legend { flex-direction: column; gap: 4px; }
 }
