@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — CR-SMART Facility Overview</title>
+  <!-- Fonts and icons are stored locally in vendor/ so the dashboard works without internet -->
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/regular.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+  <div id="app-header"></div>
+
+  <div class="app-body">
+    <aside id="app-sidebar"></aside>
+
+    <main class="main" id="home" >
+      <div class="home-grid">
+        <!-- Left: welcome text -->
+        <section class="hero-left">
+          <span class="pill pill-green">CSUCC · Smart Campus Technology</span>
+          <h1>Welcome back,<br>Johnny Guzon!</h1>
+          <span class="pill pill-purple">Super Administrator Privileges</span>
+          <p>Explore the CSUCC CR-SMART Monitoring System. Monitor ammonia levels, anticipate odor buildup, and coordinate custodial care for the CEIT Male Comfort Room.</p>
+          <div class="card demo-box">
+            <span class="demo-note">Illustrative facility demo</span>
+            <p>Example telemetry and simulated status states. One ESP32 gateway. One MQ-137 NH₃ sensor. The ESP32 is not yet connected to this dashboard.</p>
+          </div>
+        </section>
+
+        <!-- Right: status chips + digital twin -->
+        <section>
+          <div class="chip-row">
+            <div class="card chip"><i class="fa-solid fa-microchip"></i><div><strong>REAL-TIME IOT</strong><span>1 Active Sensor Node</span></div></div>
+            <div class="card chip"><i class="fa-solid fa-brain"></i><div><strong>AI PREDICTIVE</strong><span>MLR + LSTM</span></div></div>
+            <div class="card chip"><i class="fa-solid fa-broom"></i><div><strong>SMART DISPATCH</strong><span>Automated Custodial</span></div></div>
+          </div>
+
+          <div class="card twin" id="twin">
+            <div class="twin-head">
+              <div>
+                <span class="eyebrow">CR-SMART Digital Twin</span>
+                <h2>CEIT Male Facility Layout</h2>
+              </div>
+              <span class="pill status-badge" id="status-badge"><span class="dot"></span><span id="status-text">WARNING</span></span>
+            </div>
+
+            <div class="alert-banner" id="alert-banner">
+              <i class="fa-solid fa-triangle-exclamation"></i><span id="banner-text"></span>
+            </div>
+
+            <div class="demo-bar">
+              <span class="label">SUPER ADMIN DEMO</span>
+              <div class="segmented" id="demo-toggle">
+                <button data-status="LIVE">Live</button>
+                <button data-status="NORMAL">GOOD</button>
+                <button data-status="WARNING">WARNING</button>
+                <button data-status="CRITICAL">CRITICAL</button>
+              </div>
+            </div>
+
+            <!-- Top-down floor plan of the CEIT male restroom -->
+            <div class="floor">
+              <svg viewBox="0 0 600 200" role="img" aria-label="Floor plan of the CEIT male restroom with the MQ-137 sensor location">
+                <rect x="10" y="6" width="580" height="170" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="3"/>
+
+                <!-- Toilet stalls -->
+                <g font-family="JetBrains Mono, monospace" font-size="8" fill="#475569" text-anchor="middle">
+                  <g>
+                    <rect x="30" y="18" width="84" height="78" fill="#f8fafc" stroke="#94a3b8"/>
+                    <rect x="62" y="26" width="20" height="8" rx="2" fill="#e2e8f0" stroke="#94a3b8"/>
+                    <ellipse cx="72" cy="50" rx="10" ry="13" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                    <text x="72" y="86">TOILET STALL</text>
+                  </g>
+                  <g>
+                    <rect x="124" y="18" width="84" height="78" fill="#f8fafc" stroke="#94a3b8"/>
+                    <rect x="156" y="26" width="20" height="8" rx="2" fill="#e2e8f0" stroke="#94a3b8"/>
+                    <ellipse cx="166" cy="50" rx="10" ry="13" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                    <text x="166" y="86">TOILET STALL</text>
+                  </g>
+                  <g>
+                    <rect x="218" y="18" width="84" height="78" fill="#f8fafc" stroke="#94a3b8"/>
+                    <rect x="250" y="26" width="20" height="8" rx="2" fill="#e2e8f0" stroke="#94a3b8"/>
+                    <ellipse cx="260" cy="50" rx="10" ry="13" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                    <text x="260" y="86">TOILET STALL</text>
+                  </g>
+
+                  <!-- Urinals -->
+                  <path d="M372 22 h20 v14 a10 10 0 0 1 -20 0 z" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="382" y="64">URINAL</text>
+                  <path d="M422 22 h20 v14 a10 10 0 0 1 -20 0 z" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="432" y="64">URINAL</text>
+                  <path d="M472 22 h20 v14 a10 10 0 0 1 -20 0 z" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="482" y="64">URINAL</text>
+
+                  <!-- Exhaust fan -->
+                  <g transform="translate(410 118)" stroke="#004721" stroke-width="2" fill="none">
+                    <circle r="13"/>
+                    <path d="M0 -10 Q6 -4 0 0 Q-6 4 0 10 M-10 0 Q-4 -6 0 0 Q4 6 10 0"/>
+                  </g>
+                  <text x="410" y="148">EXHAUST FAN</text>
+
+                  <!-- Sinks -->
+                  <rect x="486" y="106" width="34" height="28" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="503" y="148">SINK</text>
+                  <rect x="534" y="106" width="34" height="28" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="551" y="148">SINK</text>
+                </g>
+
+                <!-- MQ-137 sensor (color follows the current status) -->
+                <g transform="translate(220 130)">
+                  <circle class="pin-pulse" r="12" fill="var(--status)"/>
+                  <circle r="13" fill="var(--status-tint)"/>
+                  <circle class="sensor-pin" r="8" fill="var(--status)"/>
+                </g>
+                <text x="220" y="164" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--status)">MQ-137 · NH₃ ODOR</text>
+              </svg>
+              <div class="floor-legend">
+                <span><i class="fa-solid fa-arrow-up"></i> ENTRANCE</span>
+                <span class="leds">STATUS LEDs
+                  <span class="led green" id="led-green"></span>
+                  <span class="led blue" id="led-blue"></span>
+                  <span class="led red" id="led-red"></span>
+                  · <i class="fa-solid fa-volume-high"></i> <span id="buzzer-text">BUZZER</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="mini-cards">
+              <div class="mini"><i class="fa-solid fa-microchip"></i><div><small>HARDWARE GATEWAY</small><strong id="gateway-text">ESP32 Online</strong></div></div>
+              <div class="mini"><i class="fa-solid fa-brain"></i><div><small>AI INFERENCE</small><strong>Ready</strong></div></div>
+              <div class="mini"><i class="fa-solid fa-shield-halved"></i><div><small>FACILITY SHIELD</small><strong>Protected</strong></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="health-bar" id="health-bar">
+        <div class="left"><i class="fa-solid fa-shield-heart"></i> OVERALL FACILITY HEALTH: <span id="health-text"></span></div>
+        <div class="right">LAST TELEMETRY SYNC &nbsp; <span id="sync-text"></span></div>
+      </div>
+
+      <h2 class="section-title">Core System Capabilities</h2>
+      <div class="features">
+        <div class="card feature">
+          <span class="num">01</span>
+          <i class="fa-solid fa-microchip"></i>
+          <h3>Single-node odor monitoring</h3>
+          <p>One ESP32 + one MQ-137 track NH₃ odor; green, blue and red LEDs plus a buzzer deliver on-site alerts.</p>
+        </div>
+        <div class="card feature">
+          <span class="num">02</span>
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Predictive data analytics</h3>
+          <p>MLR and LSTM forecast odor levels over 15, 30 and 60 minutes to support earlier intervention.</p>
+        </div>
+        <div class="card feature">
+          <span class="num">03</span>
+          <i class="fa-solid fa-broom"></i>
+          <h3>Connected custodial care</h3>
+          <p>Dispatch cleaners, track task progress and communicate through the two-way custodial chatbot.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="app-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

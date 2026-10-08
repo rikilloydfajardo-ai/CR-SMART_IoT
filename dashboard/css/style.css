@@ -265,6 +265,7 @@ button { font-family: inherit; cursor: pointer; }
 .status-NORMAL { --status: var(--ok); --status-tint: #d1fae5; }
 .status-WARNING { --status: var(--warn); --status-tint: var(--gold-tint); }
 .status-CRITICAL { --status: var(--crit); --status-tint: #fee2e2; }
+.status-OFFLINE { --status: var(--muted); --status-tint: #f1f5f9; }
 
 /* 5. Login ------------------------------------------------------------------ */
 .login-page .main { display: flex; align-items: center; justify-content: center; padding: 60px 20px; }
