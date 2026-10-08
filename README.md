@@ -15,7 +15,7 @@ IoT-based restroom environmental and air quality monitoring system with AI predi
 |---|---|
 | Johnny Guzon | [@guzonjohnny3](https://github.com/guzonjohnny3) |
 | Riki Lloyd Fajardo | [@rikilloydfajardo-ai](https://github.com/rikilloydfajardo-ai) |
-| Bernadine Cabilogan | _to be added_ |
+| Bernadine Cabilogan | [@cabiloganbernadine-lab](https://github.com/cabiloganbernadine-lab) |
 
 ## Project Rationale
 
