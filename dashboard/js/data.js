@@ -11,10 +11,12 @@
 const THRESHOLDS = { warningPpm: 10, criticalPpm: 15 };
 
 // What the on-site LEDs and buzzer do for each status.
+// Matches the ESP32 firmware: NORMAL = green, MODERATE = blue, HIGH = red + beeping buzzer.
+// (The dashboard calls the firmware's MODERATE level "WARNING" and HIGH "CRITICAL".)
 const OUTPUTS = {
   NORMAL:   { led: 'green', buzzer: 'Buzzer off' },
-  WARNING:  { led: 'blue',  buzzer: 'Short buzzer alert' },
-  CRITICAL: { led: 'red',   buzzer: 'Continuous buzzer alert' },
+  WARNING:  { led: 'blue',  buzzer: 'Buzzer off' },
+  CRITICAL: { led: 'red',   buzzer: 'Beeping buzzer' },
 };
 
 // Example readings for each status (used by the Home demo toggle and AI Monitoring).
@@ -58,8 +60,8 @@ const EXAMPLE_FORECASTS = {
 // Example alert history shown in the Alerts Timeline.
 const EXAMPLE_ALERTS = [
   { time: '01:05 PM', status: 'NORMAL', title: 'Normal conditions restored', detail: 'Green LED · buzzer off' },
-  { time: '12:48 PM', status: 'WARNING', title: 'Warning threshold crossed', detail: 'Blue LED · short buzzer alert' },
-  { time: '12:20 PM', status: 'CRITICAL', title: 'Critical odor alert resolved', detail: 'Red LED · buzzer alert cleared' },
+  { time: '12:48 PM', status: 'WARNING', title: 'Warning threshold crossed', detail: 'Blue LED · buzzer off' },
+  { time: '12:20 PM', status: 'CRITICAL', title: 'Critical odor alert resolved', detail: 'Red LED · beeping buzzer stopped' },
 ];
 
 /* Formats "minutes after 1:00 PM" as a clock time, e.g. 95 -> "02:35 PM". */
