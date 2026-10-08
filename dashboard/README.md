@@ -14,6 +14,7 @@ Double-click `dashboard/login.html` (or `index.html`) to open it in a browser.
 | Login | `login.html` | Implemented |
 | Home / Facility Overview | `index.html` | Implemented |
 | AI Monitoring | `ai-monitoring.html` | Implemented |
+| Cleaning Dispatch | `cleaning-dispatch.html` | Implemented |
 
 ## Folder structure
 
@@ -22,11 +23,13 @@ dashboard/
 ├── login.html
 ├── index.html           # Home / Facility Overview
 ├── ai-monitoring.html   # MQ-137 telemetry, forecasts, chart, model table
+├── cleaning-dispatch.html # Dispatch table, filters and dispatch form
 ├── css/style.css        # Colors, fonts and layout from the Figma design
 ├── js/layout.js         # Shared title bar, header, sidebar menu and footer
 ├── js/data.js           # EXAMPLE readings, thresholds and LED/buzzer rules
 ├── js/home.js           # Home screen demo status toggle
 ├── js/ai-monitoring.js  # AI Monitoring cards, forecast tabs and SVG chart
+├── js/cleaning-dispatch.js # Example dispatch records, filters and form
 ├── assets/logo.png      # CSUCC seal
 └── vendor/              # Local copies of the fonts and Font Awesome icons
 ```
@@ -37,4 +40,5 @@ dashboard/
 - **All sensor values are examples.** The ESP32 is not connected to the dashboard yet. The example values live in `js/data.js`.
 - The **SUPER ADMIN DEMO** buttons on Home switch between example states (GOOD, WARNING, CRITICAL). **Live** shows that no live data is connected yet.
 - **AI models are not trained yet.** The forecast values are examples, and the model evaluation table shows "Not trained yet" until there are real MQ-137 readings to train on.
+- **Dispatch records are examples.** A dispatch created with the form only stays until the page is reloaded (no database yet).
 - Menu items that are not built yet show a "planned, not yet implemented" message.
