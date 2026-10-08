@@ -41,7 +41,7 @@ _To be copied from the approved proposal._
 CR-SMART_IoT/
 ├── README.md              # Project overview (this file)
 ├── firmware/              # ESP32 code (sensor reading + LED/buzzer logic)
-├── dashboard/             # Web dashboard based on the approved Figma design
+├── dashboard/             # Web dashboard based on the approved Figma design (open dashboard/login.html)
 └── documentation/
     ├── progress.md        # Progress log (date, task, status, member)
     └── hardware/          # Wiring details and photos of the prototype
@@ -53,7 +53,7 @@ CR-SMART_IoT/
 |---|---|
 | Hardware | Breadboard prototype assembled (ESP32, MQ-137, 3 LEDs, buzzer) — [photos](documentation/hardware/README.md) |
 | Firmware | Not yet in repository |
-| Dashboard | Not yet started in repository |
+| Dashboard | 4 screens implemented from the Figma design (Login, Home, AI Monitoring, Cleaning Dispatch) — uses example data, not yet connected to the ESP32. See [`dashboard/`](dashboard/README.md) |
 | AI predictive analytics | Planned |
 
 See [`documentation/progress.md`](documentation/progress.md) for the detailed progress log.
