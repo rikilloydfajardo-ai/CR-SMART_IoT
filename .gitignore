@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+
+# Arduino / PlatformIO build output
+build/
+.pio/
+*.bin
+*.elf
+
+# Node.js (dashboard)
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Secrets — never commit Wi-Fi passwords or API keys
+.env
+secrets.h

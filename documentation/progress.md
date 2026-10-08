@@ -8,5 +8,6 @@ Documentation will be updated as the system development progresses.
 
 | Date | Task | Status | Responsible Member |
 |---|---|---|---|
-| | | | |
+| 2026-10-03 | Created GitHub repository and progress log | Done | Riki Lloyd Fajardo |
+| 2026-10-08 | Set up repository structure; added README with system title and hardware components | Done | Johnny Guzon |
 
