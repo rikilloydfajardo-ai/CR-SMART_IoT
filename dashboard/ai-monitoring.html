@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Monitoring — CR-SMART</title>
+  <!-- Fonts and icons are stored locally in vendor/ so the dashboard works without internet -->
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/regular.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="ai-monitoring">
+  <div id="app-header"></div>
+
+  <div class="app-body">
+    <aside id="app-sidebar"></aside>
+
+    <main class="main">
+      <!-- Page header -->
+      <div class="page-head">
+        <div>
+          <span class="eyebrow">Location: CEIT Male Comfort Room</span>
+          <h1>AI Predictive Odor Monitoring</h1>
+          <p>Real-time MQ-137 ammonia tracking with MLR / LSTM predictive analytics.</p>
+        </div>
+        <div class="head-actions">
+          <a class="btn-primary" href="cleaning-dispatch.html"><i class="fa-solid fa-broom"></i> Custodial Dispatch</a>
+          <span class="pill status-badge status-NORMAL"><span class="dot"></span>System Status: <span id="system-status">NORMAL</span></span>
+          <span class="timestamp" id="sync-time"></span>
+          <span class="demo-note">Illustrative telemetry · 1 ESP32 / 1 MQ-137</span>
+        </div>
+      </div>
+
+      <!-- Current readings -->
+      <div class="subhead"><h2>Current Odor Telemetry</h2></div>
+      <div class="stats">
+        <div class="card stat">
+          <div class="stat-top">MQ-137 Ammonia <i class="fa-solid fa-microchip"></i></div>
+          <div class="stat-value" id="stat-raw"></div>
+          <small>Raw analog · ADC</small>
+        </div>
+        <div class="card stat">
+          <div class="stat-top">Estimated NH₃ <i class="fa-solid fa-sliders"></i></div>
+          <div class="stat-value" id="stat-ppm"></div>
+          <small>Example estimate</small>
+        </div>
+        <div class="card stat">
+          <div class="stat-top">Odor Risk <i class="fa-solid fa-chart-line"></i></div>
+          <div class="stat-value green" id="stat-risk"></div>
+          <small id="stat-risk-label"></small>
+        </div>
+        <div class="card stat">
+          <div class="stat-top">Alert Status <i class="fa-regular fa-circle-check"></i></div>
+          <div class="stat-value green" id="stat-status"></div>
+          <small id="stat-outputs"></small>
+        </div>
+      </div>
+
+      <!-- Forecasts -->
+      <div class="subhead">
+        <h2>Multi-Horizon Predictive Forecasts</h2>
+        <div class="tabs" id="horizon-tabs">
+          <button class="tab active" data-horizon="15">15 Minutes</button>
+          <button class="tab" data-horizon="30">30 Minutes</button>
+          <button class="tab" data-horizon="60">60 Minutes</button>
+        </div>
+      </div>
+      <div class="forecasts">
+        <div class="forecast mlr">
+          <div class="forecast-top"><b>MULTIPLE LINEAR REGRESSION (MLR)</b><span class="forecast-time"></span></div>
+          <div class="forecast-mid"><span class="forecast-value" id="mlr-value"></span><span class="pill" id="mlr-risk"></span></div>
+          <p>Trend-based ammonia estimate · Illustrative forecast, not measured results.</p>
+        </div>
+        <div class="forecast lstm">
+          <div class="forecast-top"><b>LSTM NEURAL NETWORK</b><span class="forecast-time"></span></div>
+          <div class="forecast-mid"><span class="forecast-value" id="lstm-value"></span><span class="pill" id="lstm-risk"></span></div>
+          <p>Sequence-based ammonia forecast · Illustrative forecast, not measured results.</p>
+        </div>
+      </div>
+
+      <!-- Chart + alerts -->
+      <div class="two-col">
+        <div class="card panel">
+          <div class="panel-head"><h3>Odor Level: History &amp; Forecast</h3><span>Example · NH₃ ppm</span></div>
+          <svg id="odorChart" viewBox="0 0 640 190" role="img" aria-label="Odor level history and forecast chart"></svg>
+          <div class="chart-legend">
+            <span class="actual">━ Actual (example)</span>
+            <span class="fc">┅ MLR forecast</span>
+            <span style="color: var(--info)">┅ LSTM forecast</span>
+            <span class="note">Thresholds are demo settings</span>
+          </div>
+        </div>
+        <div class="card panel">
+          <div class="panel-head"><h3>Alerts Timeline</h3><span>Demo events</span></div>
+          <ul class="timeline" id="alerts"></ul>
+        </div>
+      </div>
+
+      <!-- Model evaluation -->
+      <div class="card panel" style="margin-top: 12px;">
+        <div class="panel-head"><h3>AI Model Performance Evaluation</h3><span class="demo-note">Models not trained yet</span></div>
+        <div class="table-scroll">
+          <table class="data">
+            <thead>
+              <tr><th>Model</th><th>Technique</th><th>Horizon</th><th>MAE</th><th>RMSE</th><th>MAPE (%)</th><th>R²</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>MLR</b></td><td>Linear regression</td><td>15 min</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="timestamp">Not trained yet</td></tr>
+              <tr><td><b>LSTM</b></td><td>Sequence learning</td><td>15 min</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="timestamp">Not trained yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="timestamp" style="margin-top: 10px;">Metrics will appear after the models are trained on real MQ-137 readings.</p>
+      </div>
+    </main>
+  </div>
+
+  <div id="app-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/ai-monitoring.js"></script>
+</body>
+</html>
