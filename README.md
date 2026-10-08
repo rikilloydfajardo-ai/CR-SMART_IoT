@@ -30,6 +30,7 @@ _To be copied from the approved proposal._
 | 3 | LEDs (red, blue, green) | Actuator — visual status indicators |
 | 1 | Piezo buzzer (active) | Actuator — audible alert |
 | 3 | 4.7 kΩ resistors | Current-limiting resistors for the LEDs |
+| 1 | Resistor on the sensor line (10 kΩ according to the firmware notes) | Between the MQ-137 AO pin and ESP32 GPIO 34 |
 | 1 | Breadboard | Prototype wiring |
 | 13 | Jumper wires | Connections between the ESP32, sensor, and outputs |
 | 1 | USB charging cable | Power and programming cable for the ESP32 |
@@ -51,7 +52,7 @@ CR-SMART_IoT/
 
 | Area | Status |
 |---|---|
-| Hardware | Breadboard prototype assembled (ESP32, MQ-137, 3 LEDs, buzzer) — [photos](documentation/hardware/README.md) |
+| Hardware | Breadboard prototype assembled (ESP32, MQ-137, 3 LEDs, buzzer) — [photos and pin connections](documentation/hardware/README.md) |
 | Firmware | Not yet in repository |
 | Dashboard | 4 screens implemented from the Figma design (Login, Home, AI Monitoring, Cleaning Dispatch) — uses example data, not yet connected to the ESP32. See [`dashboard/`](dashboard/README.md) |
 | AI predictive analytics | Planned |
