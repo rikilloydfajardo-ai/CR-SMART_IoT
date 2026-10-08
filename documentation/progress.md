@@ -12,3 +12,5 @@ Documentation will be updated as the system development progresses.
 | 2026-10-08 | Set up repository structure; added README with system title and hardware components | Done | Johnny Guzon |
 | 2026-10-08 | Added photos of the assembled breadboard prototype | Done | Johnny Guzon |
 | 2026-10-08 | Implemented dashboard screens from the Figma design: Login, Home, AI Monitoring, Cleaning Dispatch (example data) | Done | Johnny Guzon |
+| 2026-10-08 | Uploaded the approved Figma design screenshots | Done | Riki Lloyd Fajardo |
+| 2026-10-08 | Added descriptions of the Figma screens and the differences from the implemented dashboard | Done | Johnny Guzon |
